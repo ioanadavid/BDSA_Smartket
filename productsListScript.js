@@ -23,7 +23,7 @@ function selectDepartment(event) {
   $.get(urlCategorii + event.id, function (data, status) {
 
     console.log("Data: " + data + "\nStatus: " + status);
-    //data = (JSON.parse(data))['departments'];
+    
     $('#categoriesList').empty();
     for (var categorie of data['categories'])
       $('#categoriesList').append('<li style="list-style-type: none; margin:10px;"><button id='
@@ -31,36 +31,12 @@ function selectDepartment(event) {
         + categorie.name + '</button></li>');
   });
 
-
-
-  // data = '{"categorii" : [{"ID_CATEGORIE":1, "DENUMIRE":"caine pug"}, {"ID_CATEGORIE":2, "DENUMIRE":"caine pug 2"}]}';
-
-  // console.log("Data: " + data + "\nStatus: " + status);
-  // //data = '{"categorii" : [{"ID_CATEGORIE":1, "DENUMIRE":"caine pug"}, {"ID_CATEGORIE":2, "DENUMIRE":"caine pug 2"}]}';
-  // categorii = (JSON.parse(data))['categorii'];
-  // console.log(categorii);
-  // $('#categoriesList').empty();
-  // for (var categorie of categorii)
-  //   $('#categoriesList').append('<li style="list-style-type: none; margin:10px;"><button id='
-  //     + categorie.ID_CATEGORIE + ' class="btn btn-primary" style="width:100%;" onclick="selectCategory(this)">'
-  //     + categorie.DENUMIRE + '</button></li>');
-
 }
 
 function selectCategory(event) {
   console.log(event.id);
   $.get(urlProduse + event.id, function (data, status) {
-    // data = {
-    //   "produse": [
-    //     {"IMAGINE":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Mops_oct09_cropped2.jpg/220px-Mops_oct09_cropped2.jpg" ,
-    //     "DENUMIRE": "Pug 1",
-    //     "PRET": 16.3},
-    //     {"IMAGINE": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Mops_oct09_cropped2.jpg/220px-Mops_oct09_cropped2.jpg" ,
-    //     "DENUMIRE": "Pug 2",
-    //     "PRET": 16.3}
-    //   ]
-    // }
-    //produse = (JSON.parse(data))['produse'];
+
     arrayProduse = data;
     for (var produs of data['products']) {
       prod = produs;
@@ -82,41 +58,10 @@ function selectCategory(event) {
     $('#butonShoppingCart').css("display", "block");
   });
 
-  // arrayProduse = `{
-  //   "produse": [
-  //     {"ID":1,"IMAGINE":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Mops_oct09_cropped2.jpg/220px-Mops_oct09_cropped2.jpg" ,
-  //     "DENUMIRE": "Pug 1",
-  //     "PRET": 16.3},
-  //     {"ID":2,"IMAGINE": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Mops_oct09_cropped2.jpg/220px-Mops_oct09_cropped2.jpg" ,
-  //     "DENUMIRE": "Pug 2",
-  //     "PRET": 16.3}
-  //   ]
-  // }`;
-  // produse = (JSON.parse(arrayProduse))['produse'];
-  // console.log(produse);
-  // for (var produs of produse) {
-  //   prod = produs;
-  //   console.log("AICI");
-  //   console.log(produs);
-  //   console.log(prod.ID);
-  //   $('#produse').append('<div class="card" style="min-width:250px; max-height:250px; margin:15px; background: #eee;">' +
-  //     '<img class="card-img-top card-img-bottom img-fluid img-thumbnail" style="padding:10px; width:100%; height:100%; object-fit:contain;" src='
-  //     + produs.IMAGINE +
-  //     ' alt="Card image cap"><div class="card-body"><h5 class="card-title">' + produs.DENUMIRE + '</h5>' +
-  //     '<p class="card-text">Pret: <span style="margin-left: 10px;">' + produs.PRET + '</span> LEI</p>' +
-  //     ' </div> <button id="' + produs.ID +  '" value = ' + produs.toString() +' class="btn btn-primary" style="width:100%;" onclick="addProduct(this);" data-dismiss="alert" aria-label="Close"> ADD </button> </div></br></br>');
-
-  //   console.log(prod.ID);
-  // }
-
-  // $('.lista1').css("display", "none");
-  // $('#lista2').css("display", "block");
-  // $('#butonBack').css("display", "block");
-  // $('#butonShoppingCart').css("display", "block");
 }
 
 function deleteOrder(event) {
-  //delete 
+  
   console.log(event.id);
   $('#tr-comanda-' + event.id).remove();
 
@@ -153,7 +98,7 @@ function addProduct(value) {
 
   totalPrice += item.price;
   pretAfisat = totalPrice.toString()
-  //console.log(addedProducts);
+  
   $('#total').remove();
   $('#tbody').append(`<tr id="tr-produs-` + item.ID + `">
   <td><img style="max-width: 200px; max-height: 150px;" src="`+ item.imageURL + `" /> </td>
@@ -172,7 +117,7 @@ function addProduct(value) {
   setTimeout(() => {
     $('.alert').alert('close');
     $('body').append(` <div class="alert alert-success alert-dismissible fade show col-sm-12  col-md-6 float " style="display:none; position: fixed; margin-bottom: 40px; left: 30%;" role="alert">
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <strong>Succes!</strong> Produs adaugat.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -180,7 +125,7 @@ function addProduct(value) {
   }, 2000);
   item['quantity'] = parseInt($('#idCantitate-' + item.ID).val());
   console.log(item);
-  //console.log(value.IMAGINE);
+  
   addedProducts.push(item);
 }
 
@@ -191,7 +136,7 @@ function alerta() {
 $(document).ready(function () {
 
   $.get(urlDepartamente, function (data, status) {
-    //departamente = (JSON.parse(data))['departments'];
+    
     console.log(data);
     for (var departament of data['departments']) {
       var idD = departament.ID;
@@ -200,18 +145,6 @@ $(document).ready(function () {
         + departament.name + '</button></li>');
     }
   });
-
-  //{"departments":[{"ID":1,"name":"Bacanie"},{"ID":2,"name":"Ingrijire personala"},{"ID":3,"name":"Bauturi"}]}
-  // data = '{ "departamente" : [{"ID_DEPARTAMENT": 1, "DENUMIRE":"caine"}, {"ID_DEPARTAMENT": 2, "DENUMIRE":"caine2"}]}';
-  // departamente = (JSON.parse(data))['departamente'];
-
-
-  // for (var departament of departamente) {
-  //   var idD = departament.ID_DEPARTAMENT;
-  //   $('#listaDepartamente').append('<li style="list-style-type: none; margin:10px;"><button id='
-  //     + idD + ' class="btn btn-primary" style="width:100%;" onclick="selectDepartment(this)">'
-  //     + departament.DENUMIRE + '</button></li>');
-  // }
 
   $('#butonBack').click(function () {
     $('#lista2').css("display", "none");
@@ -272,19 +205,6 @@ $(document).ready(function () {
 
     detaliiClient['orderID'] = idComanda;
 
-    // $.put(urlComenzi, JSON.stringify(detaliiClient), function (data, status) {
-    // }, "json");
-
-    // $.ajax({
-    //   url: 'urlComenzi',
-    //   type: 'PUT',
-    //   data: JSON.stringify(detaliiClient),
-    //   contentType: "application/json",
-    //   success: function (response) {
-    //     //...
-    //   }
-    // });
-
     $.post(urlComenziUpdate, JSON.stringify(detaliiClient), function (data, status) {
       console.log("Data: " + data + "\nStatus: " + status);
       idComanda = data.orderID;
@@ -319,9 +239,9 @@ $(document).ready(function () {
 
 
     $('#tableOrdersHistory').css("display", "block");
-    //get de istoric
+
     $.get(urlComenzi, function (data, status) {
-      //departamente = (JSON.parse(data))['departments'];
+      
       console.log(data);
 
       $('#tbodyHistory').empty();
@@ -331,7 +251,7 @@ $(document).ready(function () {
         var produse = '';
         if (comanda['products'] != null)
           for (var j = 0; j < comanda['products'].length; j++) {
-            //console.log(produs)
+            
             produse += comanda['products'][j].productDetails['name'] + '; ';
           }
 
@@ -346,53 +266,6 @@ $(document).ready(function () {
 
     });
 
-    //   var comenzi = `{
-    //     "comenzi":[
-    //        {
-    //           "NUMAR_COMANDA":123,
-    //           "DATA":"2020-03-02 11:22:33",
-    //           "PRODUSE":[
-    //              {
-    //                 "IMAGINE":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Mops_oct09_cropped2.jpg/220px-Mops_oct09_cropped2.jpg",
-    //                 "DENUMIRE":"Pug 1",
-    //                 "PRET":16.3
-    //              },
-    //              {
-    //                 "IMAGINE":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Mops_oct09_cropped2.jpg/220px-Mops_oct09_cropped2.jpg",
-    //                 "DENUMIRE":"Pug 2",
-    //                 "PRET":16.3
-    //              }
-    //           ],
-    //           "TOTAL":32.6,
-    //           "STATUS":"in asteptare"
-    //        },
-    //        {
-    //           "NUMAR_COMANDA":111,
-    //           "DATA":"2020-09-02 11:22:33",
-    //           "PRODUSE":[
-    //              {
-    //                 "IMAGINE":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Mops_oct09_cropped2.jpg/220px-Mops_oct09_cropped2.jpg",
-    //                 "DENUMIRE":"Pug 1",
-    //                 "PRET":16.3
-    //              },
-    //              {
-    //                 "IMAGINE":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Mops_oct09_cropped2.jpg/220px-Mops_oct09_cropped2.jpg",
-    //                 "DENUMIRE":"Pug 2",
-    //                 "PRET":16.3
-    //              },
-    //              {
-    //                 "IMAGINE":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Mops_oct09_cropped2.jpg/220px-Mops_oct09_cropped2.jpg",
-    //                 "DENUMIRE":"Pug 2",
-    //                 "PRET":16.3
-    //              }
-    //           ],
-    //           "TOTAL":48.9,
-    //           "STATUS":"finalizata"
-    //        }
-    //     ]
-    //  }`
-
-    //comenzi = (JSON.parse(comenzi))['comenzi'];
 
   });
 
