@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Smartket</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!--===============================================================================================-->
+	
+</head>
+
+<body>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url(img/footer_no_title.jpg);">
+					<span id="titluPagina" class="login100-form-title-1">
+						Plasare comanda
+					</span>
+				</div>
+
+				<div id="divDescriere" class="mt-5 col-md-12">
+					<p class="text-center">Pentru plasarea comenzii sunt necesare urmatoarele date de identificare:</p>
+				</div>
+
+				<button class="login100-form-btn mt-5 col-md-12" id="buttonInapoi" type="button" style='display:none;'>
+					Inapoi la pagina de produse
+				</button>
+
+				<form  id="order1" class="login100-form" role="form" data-toggle="validator" >
+
+					<div class="wrap-input100 form-group m-b-26">
+						<span class="label-input100">Nume</span>
+						<input class="input100" name="nume" type="text" id="nume" placeholder="Inserati numele" value="" required="required" data-error="Numele este obligatoriu">
+						<span class="focus-input100"></span>
+						<div class="help-block with-errors"  style="color:red" ></div>
+					</div>
+
+					<div class="wrap-input100 form-group m-b-26" >
+						<span class="label-input100">Prenume</span>
+						<input class="input100" type="text" id="prenume" placeholder="Inserati prenumele" data-error="Prenumele este obligatoriu" required>
+						<span class="focus-input100"></span>
+						<div class="help-block with-errors"  style="color:red" ></div>
+					</div>
+
+					<div class="wrap-input100 form-group m-b-26" >
+						<span class="label-input100">Telefon</span>
+						<input class="input100" type="number" id="telefon" placeholder="Inserati numarul de telefon" data-error="Numarul de telefon este obligatoriu" required>
+						<span class="focus-input100"></span>
+						<div class="help-block with-errors"  style="color:red" ></div>
+					</div>
+
+					<div class="wrap-input100 form-group m-b-26" >
+						<span class="label-input100">Email</span>
+						<input class="input100" type="email" id="email" placeholder="Inserati adresa de email" data-error="Introduceti un email valid" required>
+						<span class="focus-input100"></span>
+						<div class="help-block with-errors"  style="color:red" ></div>
+					</div>
+
+					<div class="container-login100-form-btn mt-5 col-md-12">
+						<button id="buttonNext" type="button" class="login100-form-btn">
+							Next
+						</button>
+					</div>
+				</form>
+				<form  id="order2" class="login100-form validate-form" style='display:none;'>
+
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Adresa este obligatorie">
+						<span class="label-input100">Adresa</span>
+						<input class="input100" type="text" id="adresa" placeholder="Inserati adresa">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Localitatea este obligatorie">
+						<span class="label-input100">Localitate</span>
+						<input class="input100" type="text" id="localitate" placeholder="Inserati localitatea">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="container-login100-form-btn mt-5 col-md-12">
+						<button id="buttonNext2" type="button" class="login100-form-btn">
+							Next
+						</button>
+					</div>
+				</form>
+				<form id="order3" style='display:none;'>
+					<fieldset class="form-group mt-5 col-md-12">
+					  <div class="row">
+						<legend class="col-form-label col-sm-2 pt-0">Modalitate de plata</legend>
+						<div class="col-sm-8">
+						  <div class="form-check">
+							<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="online" checked>
+							<label class="form-check-label" for="gridRadios1">
+							  Card online
+							</label>
+						  </div>
+						  <div class="form-check">
+							<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="ramburs">
+							<label class="form-check-label" for="gridRadios2">
+							  Ramburs
+							</label>
+						  </div>
+						</div>
+					  </div>
+					</fieldset>
+					
+					<div class="form-group row col-md-12">
+						<label for="inputVoucher" class="col-sm-2 col-form-label">Cod voucher</label>
+						<div class="col-sm-8">
+						  <input type="voucher" class="form-control" id="inputVoucher" placeholder="Voucher">
+						</div>
+					  </div>
+
+					<div class="container-login100-form-btn mt-5 col-md-12 row justify-content-center">
+						<button class="login100-form-btn text-center" id="buttonNext3" type="button">
+							CONFIRM
+						</button>
+					</div>
+				  </form>
+				  <div id="confirmationScreen" style='display:none;' class="login100-form validate-form">
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Numele este obligatoriu">
+						<span class="label-input100">Nume</span>
+						<input class="input100" type="text" id="numeConfirmare" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Prenumele este obligatoriu">
+						<span class="label-input100">Prenume</span>
+						<input class="input100" type="text" id="prenumeConfirmare" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Numarul de telefon este obligatoriu">
+						<span class="label-input100">Telefon</span>
+						<input class="input100" type="text" id="telefonConfirmare" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Adresa de email este obigatorie">
+						<span class="label-input100">Email</span>
+						<input class="input100" type="text" id="emailConfirmare" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Adresa este obligatorie">
+						<span class="label-input100">Adresa</span>
+						<input class="input100" type="text" id="adresaConfirmare" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Localitatea este obligatorie">
+						<span class="label-input100">Localitate</span>
+						<input class="input100" type="text" id="localitateConfirmare" >
+						<span class="focus-input100"></span>
+					</div>
+
+						<div class="row wrap-input100">
+							<span class="label-input100">Modalitate de plata</span>
+						  <div class="col-sm-2">
+							<div class="form-check">
+							  <input class="form-check-input" type="radio" name="gridRadiosConfirmare" id="online" value="online" checked>
+							  <label class="form-check-label" for="gridRadios1">
+								Card online
+							  </label>
+							</div>
+							<div class="form-check">
+							  <input class="form-check-input" type="radio" name="gridRadiosConfirmare" id="ramburs" value="ramburs">
+							  <label class="form-check-label" for="gridRadios2">
+								Ramburs
+							  </label>
+							</div>
+						  </div>
+						</div>
+					  <div class="wrap-input100 m-b-26" >
+						<span class="label-input100">Voucher</span>
+						<input class="input100" type="text" id="inputVoucherConfirmare" >
+						<span class="focus-input100"></span>
+					  </div>
+
+						<div class="container-login100-form-btn mt-5 justify-content-center">
+							<button class="login100-form-btn text-center" id="buttonSubmit" type="button">
+								SUBMIT
+							</button>
+						</div>
+				  </div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script src="productsListScript.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+	<!-- <script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		
+			// Fetch all the forms we want to apply custom Bootstrap validation styles to
+			var forms = document.getElementsByClassName('needs-validation');
+			// Loop over them and prevent submission
+			var validation = Array.prototype.filter.call(forms, function(form) {
+			  form.addEventListener('submit', function(event) {
+				if (form.checkValidity() === false) {
+				  event.preventDefault();
+				  event.stopPropagation();
+				}
+				form.classList.add('was-validated');
+			  }, false);
+			});
+		  
+		</script> -->
+</body>
+
+
+
+</html>
